@@ -1,0 +1,178 @@
+---
+title: "Math 141 Midterm Exam: Makeup of Written Component"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Proper academic conduct at Reed
+
+Please read this section from the [Guidebook to Reed College](https://www.reed.edu/guidebook/comm_pol/acad_conduct.html) and complete the following acknowledgment.
+
+> "Reed College is a community of scholars. The fundamental ethical principle governing scholarship is that one should never claim or represent as one’s own work that which is not one’s own. Proper academic conduct requires that all work submitted for academic purposes – including, but not limited to examinations, laboratory reports, essays, term papers, homework exercises, translations, and creative work—be entirely the work of the person or persons who submit it, and that, in the case of work based upon experiment and observation, the experimental results and observations be reported faithfully. The principle thus requires that no one claim authorship to the work of another and that no one falsify or misrepresent empirical data. This principle should be clear to every scholar, although determining its application in particular circumstances may require careful thought and guidance.
+
+> The principle of proper academic conduct also forbids such acts as giving or receiving aid during examinations, copying someone else’s laboratory report or homework exercise, providing unpermitted aid on a written assignment, and misrepresenting the words or ideas of another as one’s own. Cooperative inquiry and investigation is a respected form of scholarship; but even where such cooperation is encouraged or required, students must understand and follow the guidelines set down for such assignments by their instructors. Similarly, students must be sure that they understand the rules under which open book examinations are to be taken. If a paper is to be submitted for credit in more than one course, students must obtain the permission of each instructor concerned in advance. It is the responsibility of each student to adhere to the expectations for citing the work of another in his or her own written work. These examples are not meant to exhaust the scope of the principle of proper academic conduct, but to illustrate its extent and spirit."
+
+To acknowledge that you read and will only engage in proper academic conduct on this exam, **type your name here:**
+
+# Instructions
+
+-   Once you have completed the exam, turn in the **rendered PDF** on Gradescope.
+
+-   All rules from the midterm still apply, except there is no time constraint (expect for the due date: 11/9 at 8pm) and that you can come to Grayson's office hours to discuss places you are stuck or to get other help. 
+
+-   For this component, you are allowed to consult any materials **from this course**, including and limited to: content on the course website, your past labs and homeworks, in-class exercises and quizzes, any notes you've taken in class, and any notes you might have compiled based on the allowed course materials listed here.
+
+-   You must work on the exam alone. Do not consult anybody for help, including classmates, friends, family, the internet (outside of class resources), etc. Do not use generative AI tools.
+
+-   You do not need to clean up axis labels nor add a title to any of your graphs unless called for in a problem.
+
+# The Data
+
+Problems 1 - 3 use the following data. 
+
+We are already seeing the effects of climate change on our planet: loss of sea ice, more intense heat, more frequent natural disasters. With more widespread awareness of these effects, there is greater interest in understanding the negative consequences of climate change on mental health. In this exam, you will explore the prevalence of climate change distress in different demographic groups. You will use a dataset based on an online survey of volunteers. These volunteers were native English speakers and indicated that they believe in anthropogenic climate change. On the survey, participants answered demographic questions and indicated their level of agreement/disagreement with statements designed to measure their level of distress related to climate change, such as "I believe that we will get climate change under control" and "The impact that climate change has had on the planet saddens me". The responses to the climate change survey items were then converted into a climate change distress score, which attempts to measure an individual's distress (spanning anger, anxiety, guilt, and sadness) about climate change. Higher values of the measure indicate a higher level of distress.
+
+Run the code in the following chunk to load the `climate_survey` data.
+
+```{r}
+load("data/climate_survey.Rdata")
+```
+
+Variables in the `climate_survey` data:
+
+-   `age`: age in years
+-   `race`: race, recorded as either `Asian`, `Black`, `Multiracial`, `Other`, or `White`
+-   `job`: employment status, recorded as `apprentice or college/university student`, `employed`, `high school student`, `homemaker`, `other`, `retired`, or `unemployed`
+-   `income`: monthly net income in US dollars
+-   `country`: country of residence
+-   `cc_dis`: climate change distress score
+-   `cc_imp`: climate change impairment score
+-   `education`: highest level of education
+-   `gender`: gender, recorded as either `female`, `male`, or `non-binary`
+
+# Problems
+
+Load any packages needed in the following chunk; note that `tidyverse` and `moderndive` have already been loaded.
+
+```{r}
+#load packages
+library(tidyverse)
+library(moderndive)
+```
+
+### Problem 1
+
+a.  What are the cases (i.e., observational units) for this study? For how many cases do we have data?
+
+b.  Create a wrangled data frame that includes information only from individuals who are millennials (i.e., are between 26 and 41 (inclusive) in age when survey was taken), reside in the United Kingdom, United States, or Canada, and are employed; within each country, include the 15 individuals who have the highest climate change distress scores (`cc_dis`). Sort the rows of the data frame so that they go from highest to lowest climate change distress score and print the wrangled data frame. Among these individuals, which countries are the individuals with the two highest climate change distress scores from? Also, explain why the resulting data frame has fewer than 45 rows.
+
+```{r}
+
+
+```
+
+c.  Create a table that helps you identify whether, for the individuals in the wrangled data frame from part (b), the proportion of individuals who identify as female differs by country. Summarize your conclusions.
+
+```{r}
+
+
+```
+
+### Problem 2
+
+a.  Create a new variable named `income_new` in which individuals who make less than 1000 USD are coded as "low", individuals who make between 1000 and 3000 USD per month are coded as "mid", and individuals who make more than 3000 USD per month are coded as "high". (*Note*: It is okay that the income category designations overlap.)
+
+```{r}
+
+
+```
+
+b.  Construct an appropriate graph that explores the relationship between climate change distress score and the categorical version of income (`income_new`). Do not include observations that have missing values for `income_new` or `cc_dis`. If you were unable to create `income_new` in (a) then use `education` instead.
+
+```{r}
+
+
+```
+
+c.  Add a title and informative labels to your graph from part (b) then describe one additional way to make your graph more effective or more engaging. Also, carry out your described change and justify your reasoning for why you think this edit improves how effective and/or engaging the visualization is.
+
+```{r}
+
+
+```
+
+### Problem 3
+
+a.  Create a new data frame without individuals that have a PhD or advanced professional degree and without individuals for whom education level is missing. Use this data frame for the rest of this problem.
+
+```{r}
+
+
+```
+
+b.  Construct a linear regression model for climate change distress score (`cc_dis`) using age (`age`) and create a corresponding visualization that illustrates the relationship between climate change distress score and age. Based on the model, how much lower would you predict the average climate change distress score to be for a 40-year-old than a 20-year-old?
+
+```{r}
+
+
+```
+
+c.  Construct a linear regression model for climate change distress score (`cc_dis`) using age (`age`) and education level (`education`). Assume equal slopes in the model. Print the model coefficients table.
+
+```{r}
+
+
+```
+
+d.  Using the table from part (c), interpret what the coefficient estimate corresponding to a master's degree education represents in the context of the data.
+
+e.  Create a visualization that displays the association between climate change distress score and age. Map education level to the color of the `geom` and include the estimated regression lines.
+
+```{r}
+
+
+```
+
+f.  Construct a linear regression model for climate change distress score (`cc_dis`) using age (`age`) and education level (`education`). Assume varying slopes in the model. Print the model coefficients table.
+
+```{r}
+
+
+```
+
+
+
+### Problem 4
+
+It is estimated that 45% of emails are Spam emails. However, software can be applied to filter out Spam emails before they reach your inbox. A certain brand of software claims that it can classify 94% of emails which are *truly* Spam as Spam, while  mis-classifying *truly* non-Spam emails as Spam only 5% of the time. Note that every email can be (i) **truly** Spam (event $A$) or **truly** Not Spam (event $A^c$), and (ii) **classified** as Spam (event $B$) or **classified** as Not Spam (event $B^c$). 
+
+
+a. What is the probability that an email is *classified* as Not Spam? *(Hint: Use the Law of Total Probability)*. Show your work. 
+
+
+b. Given that an email was *classified* as Not Spam, what is the probability that it is *truly* Spam? *(Hint: Use Bayes' Rule)*. Show your work.
+
+
+### Problem 5
+
+I imagine that each of you, especially if you live in a dorm, have an opinion about the quality of food at Commons, whether it be a positive or a negative one. As we know, the views of Math 141 students who live in dorms may not be representative of the views of Reedies who live in dorms. Let's consider several sampling strategies we could use to survey the Reedies who live in dorms about their thoughts on Commons.
+  
+
+a. This year, there are 4 first-year dorms (Trillium, Naito, Sullivan, and Woodbridge) and there are 13 returning student dorms, for a total of 17 dorms. Suppose I take each of the 17 dorms and I randomly sample 6 students from each, giving us a total of 102 students. For each sampled person, I conduct in-person interviews in their dorm.  Did I use clustering, stratification, or both in this sampling method? Justify your response.
+
+
+
+b.  Now suppose I take the 17 dorms and I randomly sample 4 dorms. Then within the sampled dorms, I randomly sample 30 students, for a total of 120 students. For each sampled person, I conduct in-person interviews in their dorm.  Did I use clustering, stratification, or both in this sampling method?  Justify your response.
+
+
+
+c. Which of methods (a) and (b) is likely to provide a more representative sample?  Which is likely to be more efficient?
+
+
+
+d. Recommend a better sampling approach and justify why it likely to yield a more representative and/or efficient sample.  For your approach, feel free to tweak one of my methods or come up with a new strategy all together.  
+
+
